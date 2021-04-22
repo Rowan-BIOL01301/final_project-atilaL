@@ -1,8 +1,11 @@
 ---
 title: "Final Project"
 subtitle: "Data Science for Biologists, Spring 2021"
-author: "Your name goes here"
-output: html_document
+author: "Lalita Martin"
+output: 
+  html_document: 
+    theme: cosmo
+    highlight: pygments
 editor_options: 
   chunk_output_type: console
 ---
@@ -12,6 +15,8 @@ editor_options:
 knitr::opts_chunk$set(warning=FALSE, message=FALSE, echo = TRUE, include = TRUE)
 
 # Load all libraries you use HERE:
+library(tidyverse)
+library(dplyr)
 ```
 
 <br><br>
@@ -19,7 +24,15 @@ knitr::opts_chunk$set(warning=FALSE, message=FALSE, echo = TRUE, include = TRUE)
 ## Introduction
 
 ```{r read-examine-data}
-
+#set file path
+parks_file <- file.path("martin_parks.csv")
+species_file <- file.path("martin_species.csv")
+#read in datasets
+parks <-read_csv(parks_file)
+species <- read_csv(species_file)
+#glimpse parks and species datasets
+glimpse(parks)
+glimpse(species)
 ```
 
 <br><br>
@@ -29,6 +42,11 @@ knitr::opts_chunk$set(warning=FALSE, message=FALSE, echo = TRUE, include = TRUE)
 #### REPLACE TEXT WITH YOUR QUESTION. Your question should literally be a level-4 header.
 
 ### Methods
+
+```{methods}
+
+
+```
 
 ### Answer
 
@@ -43,6 +61,11 @@ Replace this text with your answer to your question.
 
 ### Methods
 
+```{methods}
+
+
+```
+
 ### Answer
 
 Replace this text with your answer to your question.
@@ -54,6 +77,11 @@ Replace this text with your answer to your question.
 #### REPLACE TEXT WITH YOUR QUESTION. Your question should literally be a level-4 header.
 
 ### Methods
+
+```{methods}
+
+
+```
 
 ### Answer
 
@@ -67,6 +95,11 @@ Replace this text with your answer to your question.
 #### REPLACE TEXT WITH YOUR QUESTION. Your question should literally be a level-4 header.
 
 ### Methods
+
+```{methods}
+
+
+```
 
 ### Answer
 
