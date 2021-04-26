@@ -39,29 +39,44 @@ glimpse(species)
 
 ## Question 1
 
-#### REPLACE TEXT WITH YOUR QUESTION. Your question should literally be a level-4 header.
+#### Which state has the largest (in acres) state park? 
 
 ### Methods
 
-```{methods}
-
+```{r methods1}
+parks %>% 
+  #separate(State, into = c("state", "shared_state"), sep = ",") %>%
+  group_by(State) %>%
+  arrange(-Acres) -> parks_clean
+  
+#Lets take some parks to compare
+#random_parks <- c("WRST", "EVER", "DEVA", "OLYM", "GRTE")
+parks_clean %>%
+  filter(Acres > 1000000) -> big_parks
 
 ```
 
 ### Answer
 
-Replace this text with your answer to your question.
+```{r answer1}
+ggplot(big_parks)+
+  aes(x = State, y = Acres, fill = State)+
+  scale_y_log10()+
+  geom_col()
+```
+
+Arkansas comes in first with Wrangell - St. Elias National Park and Preserve at a whopping 8,323,148 acres! 
 
 
 <br><br>
 
 ## Question 2
 
-#### REPLACE TEXT WITH YOUR QUESTION. Your question should literally be a level-4 header.
+#### What are the top 5 largest state parks by park name?
 
 ### Methods
 
-```{methods}
+```{r methods2}
 
 
 ```
@@ -78,7 +93,7 @@ Replace this text with your answer to your question.
 
 ### Methods
 
-```{methods}
+```{r methods3}
 
 
 ```
@@ -96,7 +111,7 @@ Replace this text with your answer to your question.
 
 ### Methods
 
-```{methods}
+```{r methods4}
 
 
 ```
