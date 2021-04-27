@@ -77,7 +77,9 @@ Arkansas comes in first with Wrangell - St. Elias National Park and Preserve at 
 ### Methods
 
 ```{r methods2}
-
+species %>%
+  filter(Category == "Fungi") %>%
+  filter(Occurrence == "Present") -> fun_guy
 
 ```
 
