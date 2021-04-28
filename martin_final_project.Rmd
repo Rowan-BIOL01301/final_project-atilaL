@@ -45,20 +45,15 @@ glimpse(species)
 
 ```{r methods1}
 parks %>% 
-  #separate(State, into = c("state", "shared_state"), sep = ",") %>%
-  group_by(State) %>%
-  arrange(-Acres) -> parks_clean
-  
+  #let's work with only the parks that are solely in one state
+  filter(str_detect(State, ",", negate=TRUE)) -> parks_clean # removes rows with , in State column
+
 #Lets take some parks to compare
-#random_parks <- c("WRST", "EVER", "DEVA", "OLYM", "GRTE")
 parks_clean %>%
-  filter(Acres > 1000000) -> big_parks
+  filter(Acres > 1000000) %>%
+  arrange(-Acres) -> big_parks
+big_parks
 
-```
-
-### Answer
-
-```{r answer1}
 ggplot(big_parks)+
   aes(x = State, y = Acres, fill = State)+
   scale_y_log10()+
@@ -80,28 +75,25 @@ Arkansas comes in first with Wrangell - St. Elias National Park and Preserve at 
 
 ```{r methods2}
 species %>%
-  #rename(species, "park_name" = `Park Name`) %>%
+  rename(park_name = `Park Name`) %>%
   filter(Category == "Fungi") %>%
   filter(Occurrence == "Present") %>%
-  count(`Park Name`) %>%
+  count(park_name) %>%
   filter(n > 200) %>%
   arrange(-n) -> fun_guy
+fun_guy
 
-```
-
-### Answer
-
-``` {r answer2}
 ggplot(fun_guy)+
-  aes(y = reorder(`Park Name`, n), x = n, fill = `Park Name`)+
+  aes(y = reorder(park_name, n), x = n, fill = park_name)+
   geom_col()+
   theme_grey()+
   theme(legend.position = "none")+
   labs(title = "Number of Fungi Species in Parks", 
        x = "Number of Species Found", 
        y = "Park Name")
-
 ```
+
+### Answer
 
 Shenandoah National Park has the most species of fungi, followed by Great Smoky Mountains, North Cascades National Park, and three others all with more than 200 species found! 
 
@@ -109,36 +101,33 @@ Shenandoah National Park has the most species of fungi, followed by Great Smoky 
 
 ## Question 3
 
-#### Which parks have high amounts of algae species found? 
+#### Which parks have the greatest amounts of algae species? 
 
 ### Methods
 
 ```{r methods3}
 species %>%
-  #rename(species, "park_name" = `Park Name`) %>%
+  rename(park_name = `Park Name`) %>%
   filter(Category == "Algae") %>%
   filter(Occurrence == "Present") %>%
-  count(`Park Name`) %>%
+  count(park_name) %>%
   filter(n > 50) %>%
   arrange(-n) -> gee_al
+gee_al
 
-```
-
-### Answer
-
-```{r answer3}
 ggplot(gee_al)+
-  aes(y = reorder(`Park Name`, n), x = n, fill = `Park Name`)+
+  aes(y = reorder(park_name, n), x = n, fill = park_name)+
   geom_col()+
   theme_grey()+
   theme(legend.position = "none")+
   labs(title = "Number of Algae Species in Parks", 
        x = "Number of Species Found",  
        y = "Park Name")
-
 ```
 
-Not very many parks have algae species at all in them. However there were seven, of which I have included the top 4 that had greater than 50, because the bottom two were less than 30. 
+### Answer
+
+Rocky Mountain National Park had the highest amount of reported algae species of 150! Followed by Congaree with 74, Channel Islands at 61 and Glacier Bay at 57. 
 
 
 <br><br>
