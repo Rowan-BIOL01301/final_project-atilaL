@@ -89,7 +89,7 @@ species %>%
 
 ### Answer
 
-``` {r}
+``` {r answer2}
 ggplot(fun_guy)+
   aes(y = `Park Name`, x = n, fill = `Park Name`)+
   geom_col()+
@@ -104,18 +104,33 @@ Shenandoah National Park has the most species of fungi, followed by Great Smoky 
 
 ## Question 3
 
-#### REPLACE TEXT WITH YOUR QUESTION. Your question should literally be a level-4 header.
+#### Which parks have high amounts of algae species found? 
 
 ### Methods
 
 ```{r methods3}
-
+species %>%
+  #rename(species, "park_name" = `Park Name`) %>%
+  filter(Category == "Algae") %>%
+  filter(Occurrence == "Present") %>%
+  count(`Park Name`) %>%
+  filter(n > 50) %>%
+  arrange(-n) -> gee_al
 
 ```
 
 ### Answer
 
-Replace this text with your answer to your question.
+```{r answer3}
+ggplot(gee_al)+
+  aes(y = `Park Name`, x = n, fill = `Park Name`)+
+  geom_col()+
+  theme(legend.position = "none")+
+  labs(x = "Number of Algae Species Found")
+
+```
+
+Not very many parks have algae species at all in them. However there were seven, of which I have included the top 4 that had greater than 50, because the bottom two were less than 30. 
 
 
 <br><br>
@@ -132,5 +147,10 @@ Replace this text with your answer to your question.
 ```
 
 ### Answer
+
+```{r answer4}
+
+
+```
 
 Replace this text with your answer to your question.
