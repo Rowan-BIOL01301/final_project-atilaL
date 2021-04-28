@@ -134,21 +134,30 @@ Rocky Mountain National Park had the highest amount of reported algae species of
 
 ## Question 4
 
-#### REPLACE TEXT WITH YOUR QUESTION. Your question should literally be a level-4 header.
-
+#### How many _different_ vascular plants are in Death Valley compared to The Great Smoky Mountain National Park?
 ### Methods
 
 ```{r methods4}
 species %>%
-  filter(Category == "Vascular Plant") -> plants
+  rename(park_name = `Park Name`) %>%
+  rename(sci_name = `Scientific Name`) %>%
+  rename(common_name = `Common Names`) %>%
+  filter(Category == "Vascular Plant") %>%
+  filter(park_name == c("Death Valley National Park", "Great Smoky Mountains National Park")) %>%
+  filter(Occurrence == "Present") %>% 
+  count(park_name)-> plants
+plants
 
+ggplot(plants)+
+  aes(x = reorder(park_name, n), y = n, fill = park_name)+
+  geom_col()+
+  theme_grey()+
+  theme(legend.position = "none")+
+  labs(title = "Number of Algae Species in Parks", 
+       y = "Number of Species Found",  
+       x = "Park Name")
 ```
 
 ### Answer
 
-```{r answer4}
-
-
-```
-
-Replace this text with your answer to your question.
+In Death Valley, there are 491 species of vascular plant and in the GSMP there are 818. 
