@@ -62,7 +62,9 @@ parks_clean %>%
 ggplot(big_parks)+
   aes(x = State, y = Acres, fill = State)+
   scale_y_log10()+
-  geom_col()
+  geom_col()+
+  labs(title = "National Park Acreage Per State")+
+  theme_grey()
 ```
 
 Arkansas comes in first with Wrangell - St. Elias National Park and Preserve at a whopping 8,323,148 acres! 
@@ -93,8 +95,11 @@ species %>%
 ggplot(fun_guy)+
   aes(y = reorder(`Park Name`, n), x = n, fill = `Park Name`)+
   geom_col()+
+  theme_grey()+
   theme(legend.position = "none")+
-  labs(x = "Number of Fungi Species Found", y = "Park Name")
+  labs(title = "Number of Fungi Species in Parks", 
+       x = "Number of Species Found", 
+       y = "Park Name")
 
 ```
 
@@ -125,8 +130,11 @@ species %>%
 ggplot(gee_al)+
   aes(y = reorder(`Park Name`, n), x = n, fill = `Park Name`)+
   geom_col()+
+  theme_grey()+
   theme(legend.position = "none")+
-  labs(x = "Number of Algae Species Found",  y = "Park Name")
+  labs(title = "Number of Algae Species in Parks", 
+       x = "Number of Species Found",  
+       y = "Park Name")
 
 ```
 
