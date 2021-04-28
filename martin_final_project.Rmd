@@ -91,10 +91,10 @@ species %>%
 
 ``` {r answer2}
 ggplot(fun_guy)+
-  aes(y = `Park Name`, x = n, fill = `Park Name`)+
+  aes(y = reorder(`Park Name`, n), x = n, fill = `Park Name`)+
   geom_col()+
   theme(legend.position = "none")+
-  labs(x = "Number of Fungi Species Found")
+  labs(x = "Number of Fungi Species Found", y = "Park Name")
 
 ```
 
@@ -123,10 +123,10 @@ species %>%
 
 ```{r answer3}
 ggplot(gee_al)+
-  aes(y = `Park Name`, x = n, fill = `Park Name`)+
+  aes(y = reorder(`Park Name`, n), x = n, fill = `Park Name`)+
   geom_col()+
   theme(legend.position = "none")+
-  labs(x = "Number of Algae Species Found")
+  labs(x = "Number of Algae Species Found",  y = "Park Name")
 
 ```
 
@@ -142,7 +142,8 @@ Not very many parks have algae species at all in them. However there were seven,
 ### Methods
 
 ```{r methods4}
-
+species %>%
+  filter(Category == "Vascular Plant") -> plants
 
 ```
 
