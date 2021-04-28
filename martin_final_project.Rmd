@@ -72,20 +72,33 @@ Arkansas comes in first with Wrangell - St. Elias National Park and Preserve at 
 
 ## Question 2
 
-#### What are the top 5 largest state parks by park name?
+#### Which parks have the most fungi species growing in them?
 
 ### Methods
 
 ```{r methods2}
 species %>%
+  #rename(species, "park_name" = `Park Name`) %>%
   filter(Category == "Fungi") %>%
-  filter(Occurrence == "Present") -> fun_guy
+  filter(Occurrence == "Present") %>%
+  count(`Park Name`) %>%
+  filter(n > 200) %>%
+  arrange(-n) -> fun_guy
 
 ```
 
 ### Answer
 
-Replace this text with your answer to your question.
+``` {r}
+ggplot(fun_guy)+
+  aes(y = `Park Name`, x = n, fill = `Park Name`)+
+  geom_col()+
+  theme(legend.position = "none")+
+  labs(x = "Number of Fungi Species Found")
+
+```
+
+Shenandoah National Park has the most species of fungi, followed by Great Smoky Mountains, North Cascades National Park, and three others all with more than 200 species found! 
 
 <br><br>
 
