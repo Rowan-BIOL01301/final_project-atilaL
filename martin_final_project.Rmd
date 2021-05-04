@@ -45,7 +45,7 @@ glimpse(species)
 
 ### Methods
 
-```{r methods1}
+```{r methods1, fig.height = 5, fig.width= 7}
 parks %>% 
   #let's work with only the parks that are solely in one state
   filter(str_detect(State, ",", negate=TRUE)) -> parks_clean # removes rows with , in State column
@@ -77,7 +77,7 @@ ggplot(big_parks)+
 
 ### Methods
 
-```{r methods2}
+```{r methods2, fig.height = 5, fig.width= 7}
 species %>%
   rename(park_name = `Park Name`) %>%
   filter(Category == "Fungi") %>%
@@ -109,7 +109,7 @@ ggplot(fun_guy)+
 
 ### Methods
 
-```{r methods3}
+```{r methods3, fig.height = 5, fig.width= 7}
 species %>%
   rename(park_name = `Park Name`) %>%
   filter(Category == "Algae") %>%
@@ -141,7 +141,7 @@ Rocky Mountain National Park had the highest amount of reported algae species of
 #### How many _different_ vascular plants are in Death Valley compared to The Great Smoky Mountain National Park?
 ### Methods
 
-```{r methods4}
+```{r methods4, fig.height = 5, fig.width= 7}
 species %>%
   rename(park_name = `Park Name`) %>%
   rename(sci_name = `Scientific Name`) %>%
