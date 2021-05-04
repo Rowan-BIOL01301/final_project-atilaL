@@ -1,7 +1,7 @@
 ---
 title: "Final Project"
 subtitle: "Data Science for Biologists, Spring 2021"
-author: "Lalita Martin"
+author: "Lalita Martin" 
 output: 
   html_document: 
     theme: cosmo
@@ -21,7 +21,7 @@ library(dplyr)
 
 <br><br>
 
-## Introduction
+## Introduction 
 
 The datasets I have chosen are the [National Parks Biodiversity](https://www.kaggle.com/nationalparkservice/park-biodiversity) datasets from Kaggle. They are about National Parks and the species of various organisms found in these parks. I chose these datasets because I want to be a biologist on some level and I enjoy looking at biodiversity all over the world. These datasets show species diversity in various national parks, which I also like, as I have a great interest in working for the parks dept. one day. 
 
@@ -37,7 +37,7 @@ glimpse(parks)
 glimpse(species)
 ```
 
-<br><br>
+<br><br> 
 
 ## Question 1
 
